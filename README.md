@@ -1,17 +1,3 @@
 //Urse Andrei 312CB
 
-Programul este modularizat in jurul structurii 'state' care retine
-sistemul Lindenmeyer incarcat, imaginea curenta si istoricul comenzilor.
-Procesul de generare a sirului de caractere bazat pe axioma si reguli 
-gestioneaza dinamic memoria, realocand spatiu pentru noul sir la fiecare
-iteratie. Sirul se parcurge caracter cu caracter.
-Imaginea este stocata ca o matrice liniarizata de pixeli.
-Pentru grafica, am folosit o stiva pentru a memora pozitia si unghiul curent
-pentru a permite crearea structurilor complexe. Liniile sunt trasate folosind
-Algoritmul Bresenham implementat cu numere intregi. 
-La logica undo/redo am folosit structura "singly linked list", care retine sirul
-de caractere al comenzii executate. Structura mentine un pointer la capatul listei
-si un contor care indica numarul curent de comenzi, momentul la care se afla istoricul.
-Astfel, pentru undo, se executa din nou comenzile de la inceput pana la cea dinaintea 
-careia i-a fost dat undo (primele n - 1 comenzi). Pentru redo se incrementeaza indexul si 
-se executa din nou comenzile pana la pozitia n + 1. 
+The program is modularized around the state struct, which holds the loaded Lindenmayer system, the current image, and the command history. The string generation process—driven by the axiom and production rules—manages memory dynamically, reallocating space for the new string at each iteration. The string is then traversed character by character.The image is stored as a flattened pixel matrix. For the graphics engine, a stack is used to save the current position and angle, enabling the generation of complex branching structures. Lines are drawn using an integer-only implementation of Bresenham's algorithm.For the undo/redo logic, a singly linked list stores the command string of each executed action. This structure maintains a pointer to the head/tail of the list and a counter tracking the current command index within the history. Consequently, an undo operation replays the commands from the beginning up to the one prior to the undone state (the first $n - 1$ commands). For a redo operation, the index is incremented, and the commands are replayed up to position n + 1.
